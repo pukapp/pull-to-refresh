@@ -438,15 +438,17 @@ open class ESRefreshFooterView: ESRefreshComponent {
         
         self.animator.refreshAnimationBegin(view: self)
         
-        let x = scrollView.contentOffset.x
-        let y = max(0.0, scrollView.contentSize.height - scrollView.bounds.size.height + scrollView.contentInset.bottom)
+//        let x = scrollView.contentOffset.x
+//        let y = max(0.0, scrollView.contentSize.height - scrollView.bounds.size.height + scrollView.contentInset.bottom)
+//
+//        // Call handler
+//        UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveLinear, animations: {
+//            scrollView.contentOffset = CGPoint.init(x: x, y: y)
+//        }, completion: { (animated) in
+//            self.handler?()
+//        })
         
-        // Call handler
-        UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveLinear, animations: {
-            scrollView.contentOffset = CGPoint.init(x: x, y: y)
-        }, completion: { (animated) in
-            self.handler?()
-        })
+        self.handler?()
     }
     
     open override func stop() {
@@ -470,14 +472,14 @@ open class ESRefreshFooterView: ESRefreshComponent {
         if scrollView.isDecelerating {
             var contentOffset = scrollView.contentOffset
             contentOffset.y = min(contentOffset.y, scrollView.contentSize.height - scrollView.frame.size.height)
-            if contentOffset.y < 0.0 {
-                contentOffset.y = 0.0
-                UIView.animate(withDuration: 0.1, animations: { 
-                    scrollView.setContentOffset(contentOffset, animated: false)
-                })
-            } else {
-                scrollView.setContentOffset(contentOffset, animated: false)
-            }
+//            if contentOffset.y < 0.0 {
+//                contentOffset.y = 0.0
+//                UIView.animate(withDuration: 0.1, animations: {
+//                    scrollView.setContentOffset(contentOffset, animated: false)
+//                })
+//            } else {
+//                scrollView.setContentOffset(contentOffset, animated: false)
+//            }
         }
         
     }
